@@ -1,10 +1,46 @@
 package com.poly.polyapcsafinalproject23_24;
 
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import com.poly.polyapcsafinalproject23_24.GameActivity;
 
 import java.util.Scanner;
 
 public class GameCLopezJames extends GameActivity {
+
+    private TextView tvTitle, tvSubtitile, tvStoryText;
+    private ImageView ivStory;
+    private Button btn1, btn2, btn3;
+    private boolean isWon;
+
+    @Override
+    protected void run() {
+        setContentView(R.layout.activity_game_3_button);
+
+        tvTitle = findViewById(R.id.tv_title_txt);
+        tvSubtitile = findViewById(R.id.tv_subtitle);
+        tvStoryText = findViewById(R.id.tv_story);
+        ivStory =  findViewById(R.id.iv_story);
+        btn1 = findViewById(R.id.btn_1);
+        btn2 = findViewById(R.id.btn_2);
+        btn3 = findViewById(R.id.btn_3);
+
+        tvTitle.setText("A Journey in The Strain Area");
+        tvSubtitile.setText("Choose Through The Three ");
+
+        numLives = 5;
+        start();
+    }
+
+    private void setAllBtnsVisible()
+    {
+        btn1.setVisibility(View.VISIBLE);
+        btn2.setVisibility(View.VISIBLE);
+        btn3.setVisibility(View.VISIBLE);
+    }
 
     //instance variables
     //   variables you plan to use throughout the adventure
