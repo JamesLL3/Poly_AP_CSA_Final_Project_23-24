@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class GameCLopezJames extends GameActivity {
 
+    private int numLives;
     private TextView tvTitle, tvSubtitile, tvStoryText;
     private ImageView ivStory;
     private Button btn1, btn2, btn3;
@@ -29,10 +30,26 @@ public class GameCLopezJames extends GameActivity {
         btn3 = findViewById(R.id.btn_3);
 
         tvTitle.setText("A Journey in The Strain Area");
-        tvSubtitile.setText("Choose Through The Three ");
+        tvSubtitile("by James Lopez");
+        tvStoryText.setText("Choose Through The Three");
 
         numLives = 5;
-        start();
+
+        tvStoryText.setText("The 3 doors leads to any place you can imagine, which one will you choose to win?");
+
+        setAllBtnsVisible();
+        btn1.setText("Continue");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                start();
+            }
+        });
+
+
     }
 
     private void setAllBtnsVisible()
@@ -42,71 +59,70 @@ public class GameCLopezJames extends GameActivity {
         btn3.setVisibility(View.VISIBLE);
     }
 
-    //instance variables
-    //   variables you plan to use throughout the adventure
-    private Scanner scan;
-    private int numLives;
-    //private Player player; (optional)
-
-
-    public void run()
-    {
-        //initialize number of lives
-        numLives = 5;
-        //create a scanner object for user input
-        scan = new Scanner(System.in);
-
-        //create a player object (optional)
-        //player = new Person(...)
-
-        //display project title and description
-        Util.clearConsole();
-        System.out.println("A Journey in The Strain Area");
-        System.out.println("The 3 doors leads to any place you can imagine, which one will you choose to win?");
-
-        Util.pauseConsole();
-        start();
-    }
-
     private void start()
     {
-        System.out.println("Number of lives:\t" + numLives);
-        Util.pauseConsole();
-        Util.clearConsole();
-        //start adventure here
-        System.out.println("You awaken in an area called The Strain Area, 3 doors are in front of you, which one do you choose to go trhough?");
-        System.out.println("1. Open door number one\n2. Don't open door number two and run to seek any help\n3. Open door number three");
-        int choice = Util.enterInt(1,3);
+        String text = "Number of lives:\t" + numLives +
+                "You awaken in an area called The Strain Area, 3 doors are in front of you, " +
+                "which one do you choose to go through?";
 
-        if (choice == 1)
-        {
-            openDoorOne();
-        }
-        else if (choice == 2)
-        {
-            runFromDoorTwo();
-        }
-        else if (choice == 3)
-        {
-            openDoorThree();
-        }
+        tvStoryText.setText(text);
+
+        setAllBtnsVisible();
+        btn1.setText("Open door number one");
+        btn2.setText("Don't open door number two and run to seek any help");
+        btn3.setText("Open door number three");
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDoorOne();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                runFromDoorTwo();
+            }
+        });
+
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDoorThree();
+            }
+        });
+
     }
 
     private void openDoorOne()
     {
-        Util.clearConsole();
-        System.out.println("\nDoor 1 has you walk into chaos, people running, screaming THE CREATURE IS BACK IT'S BACK, not hesitating you run and hide with a group of people in a abandoned mine shaft. Do you get out to see the creature in question or stay hiding?");
-        System.out.println("1. Leave the mineshaft you are in\n2. Stay hidding in the mineshaft");
-        int choice = Util.enterInt(1,2);
 
-        if (choice == 1)
-        {
-            leaveMineShaft();
-        }
-        else if (choice == 2)
-        {
-            stayHidding();
-        }
+        String text = "nDoor 1 has you walk into chaos, people running, screaming THE CREATURE IS BACK IT'S BACK, " +
+                "not hesitating you run and hide with a group of people in a abandoned mine shaft. " +
+                "Do you get out to see the creature in question or stay hiding?\"";
+
+        tvStoryText.setText(text);
+
+        setAllBtnsVisible();
+        btn1.setText("Leave the mineshaft you are in");
+        btn2.setText("Stay hidding in the mineshaft");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                leaveMineShaft();
+            }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                stayHidding();
+            }
+        });
+
     }
 
     private void leaveMineShaft()
