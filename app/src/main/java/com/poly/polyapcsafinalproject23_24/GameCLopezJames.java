@@ -122,28 +122,51 @@ public class GameCLopezJames extends GameActivity {
                 stayHidding();
             }
         });
-
     }
 
     private void leaveMineShaft()
     {
-        Util.clearConsole();
-        System.out.println("Getting out let’s you immediately see the mythical creature known as SUN//EATER, that does not hesitate to pubmed you to the ground and leaves you in unimaginalbe pain. Do you now stay where you are or make an effort to run away?");
-        System.out.println("1. Stay where you are on the ground\n2. Attempt to make a run for it");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("Getting out let’s you immediately see the mythical creature known as SUN//EATER, that does not hesitate to pubmed you to the ground and leaves you in unimaginalbe pain. Do you now stay where you are or make an effort to run away?");
 
-        if (choice == 1)
-        {
-            stayWhereYouAre();
-        }
-        else if (choice == 2)
-        {
-            makeARunForIt();
-        }
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
+
+        setAllBtnsVisible();
+        btn1.setText("stayWhereYouAre");
+        btn2.setText("makeARunForIt");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {stayWhereYouAre(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { makeARunForIt(); }
+        });
     }
 
     private void stayWhereYouAre()
     {
+        tvStoryText.setText("Getting out let’s you immediately see the mythical creature known as SUN//EATER, that does not hesitate to pubmed you to the ground and leaves you in unimaginalbe pain. Do you now stay where you are or make an effort to run away?");
+
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
+
+        setAllBtnsVisible();
+        btn1.setText("stayWhereYouAre");
+        btn2.setText("makeARunForIt");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {stayWhereYouAre(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { makeARunForIt(); }
+        });
+
         Util.clearConsole();
         System.out.println("You decide to stay where you are, suddenly the creature goes off in a different direction, after getting back up, you turn to see the group you left, but now you understand why the creature left,they were the reason the creature left you alone, they were it’s next target and now they're all gone. Now all alone, you look around and see a door, do you go towards it or abandon the door and go a different direction?");
         System.out.println("1. Go open the door and walk through\n2. Abondon the door and go look for any help");
