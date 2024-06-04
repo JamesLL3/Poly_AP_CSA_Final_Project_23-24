@@ -212,36 +212,46 @@ public class GameCLopezJames extends GameActivity {
 
     private void runFromDoorTwo()
     {
-        Util.clearConsole();
-        System.out.println("You choose to not open a single door and just RUN, now you can either run AWAY from the door or run PAST the door, which do you do?");
-        System.out.println("1. Run away from the door\n2. Run past the door's direction");
-        int choice = Util.enterInt(1,2);
+        ivStory.setImageResource(R.drawable.im_gane_run);
 
-        if (choice == 1)
-        {
-            runAwayFromTheDoor();
-        }
-        else if (choice == 2)
-        {
-            runPastTheDoor();
-        }
+        tvStoryText.setText("You choose to not open a single door and just RUN, now you can either run AWAY from the door or run PAST the door, which do you do?");
+
+        setAllBtnsVisible();
+        btn1.setText("Run away from the door");
+        btn2.setText("Run PAST the door's direction");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { runAwayFromTheDoorAgain(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { runPastTheDoor(); }
+        });
     }
 
     private void runAwayFromTheDoor()
     {
-        Util.clearConsole();
-        System.out.println("You run away from the door, from a distance you can see a light in the distance just visible enough to know it's real, do you run towards the light or no?");
-        System.out.println("1. Run towards the light\n2. Don't run towards the light");
-        int choice = Util.enterInt(1,2);
+        ivStory.setImageResource(R.drawable.im_gane_run);
 
-        if (choice == 1)
-        {
-            goTowardsTheLight();
-        }
-        else if (choice == 2)
-        {
-            runAwayFromTheLight();
-        }
+        tvStoryText.setText("You run away from the door, from a distance you can see a light in the distance just visible enough to know it's real, do you run towards the light or no?");
+
+        setAllBtnsVisible();
+        btn1.setText("RUN towards the light");
+        btn2.setText("DON'T run towards the light");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { goTowardsTheLight(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { runAwayFromTheDoor(); }
+        });
     }
 
 
@@ -262,6 +272,25 @@ public class GameCLopezJames extends GameActivity {
 
     private void runPastTheDoor()
     {
+        ivStory.setImageResource(R.drawable.im_gane_run);
+
+        tvStoryText.setText("You run away from the door, from a distance you can see a light in the distance just visible enough to know it's real, do you run towards the light or no?");
+
+        setAllBtnsVisible();
+        btn1.setText("RUN towards the light");
+        btn2.setText("DON'T run towards the light");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { goLeft(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { goRight(); }
+        });
+
         Util.clearConsole();
         System.out.println("Running past the doors direction leads you to a strange hall area that has a left or right area to go through, do you either go left or right?");
         System.out.println("1. Go left\n2. Go right");
