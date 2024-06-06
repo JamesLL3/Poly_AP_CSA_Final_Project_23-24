@@ -1,5 +1,6 @@
 package com.poly.polyapcsafinalproject23_24;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +17,7 @@ public class GameCLopezJames extends GameActivity {
     private ImageView ivStory;
     private Button btn1, btn2, btn3;
     private boolean isWon;
+    private int numLives;
 
     @Override
     protected void run() {
@@ -50,6 +52,9 @@ public class GameCLopezJames extends GameActivity {
         });
 
 
+    }
+
+    private void tvSubtitile(String byJamesLopez) {
     }
 
     private void setAllBtnsVisible()
@@ -166,48 +171,85 @@ public class GameCLopezJames extends GameActivity {
             @Override
             public void onClick(View v) { makeARunForIt(); }
         });
-
-        Util.clearConsole();
-        System.out.println("You decide to stay where you are, suddenly the creature goes off in a different direction, after getting back up, you turn to see the group you left, but now you understand why the creature left,they were the reason the creature left you alone, they were it’s next target and now they're all gone. Now all alone, you look around and see a door, do you go towards it or abandon the door and go a different direction?");
-        System.out.println("1. Go open the door and walk through\n2. Abondon the door and go look for any help");
-        int choice = Util.enterInt(1,2);
-
-        if (choice == 1)
-        {
-            goOpenTheDoor();
-        }
-        else if (choice == 2)
-        {
-            leaveTheDoor();
-        }
     }
 
     private void goOpenTheDoor()
     {
-        Util.clearConsole();
-        System.out.println("Going towards the door while in anguasing pain, opening it reveals the real world, perfectly in front of a hospital to get yourself patched it!");
-        youWon();
+        isWon = true;
+        tvStoryText.setText("Going towards the door while in anguasing pain, opening it reveals the real world, perfectly in front of a hospital to get yourself patched it!");
+
+
+        ivStory.setImageResource(R.drawable.;
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { end(); }
+        });
     }
 
     private void stayHidding()
     {
-        Util.clearConsole();
-        System.out.println("You stayed inside the mineshaft with the rest of the people, but as pericing silence creeps on you, suddenenly the top of the mineshaft opens up, the creature had found all of you, with one swift motion, everyone seize to exist...");
-        defeat();
+        isWon = false;
+        tvStoryText.setText("You stayed inside the mineshaft with the rest of the people, but as pericing silence creeps on you, suddenenly the top of the mineshaft opens up, the creature had found all of you, with one swift motion, everyone seize to exist in the matter of seconds...");
+
+        ivStory.setImageResource(R.drawable.   );
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
     }
 
     private void makeARunForIt()
     {
-        Util.clearConsole();
-        System.out.println("You attempted to make a run for it as a last ditch effort for any salvation, but this proves to be short lived as the creature quickly catches up to you and quickly you are erased by a swift attack...");
-        defeat();
+        isWon = false;
+        tvStoryText.setText("You attempted to make a run for it as a last ditch effort for any salvation, but this proves to be short lived as the creature quickly catches up to you and quickly you are erased by a swift attack...");
+
+        ivStory.setImageResource(R.drawable.   );
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
     }
 
     private void leaveTheDoor()
     {
-        Util.clearConsole();
-        System.out.println("Angered by seeing another door knowing walking through a door lead you to here, you decide to abandon the door and walk elsewhere looking for any type of help. For what seemed like hours of walking you stop walking from exhausting but your whole body was weak to poing where you collapse on the floor, you slowly lose your conciousness and fall asleep...only to never wake up...");
-        defeat();
+        isWon = false;
+        tvStoryText.setText("Angered by seeing another door knowing walking through a door lead you to here, you decide to abandon the door and walk elsewhere looking for any type of help. For what seemed like hours of walking you stop walking from exhausting but your whole body was weak to poing where you collapse on the floor, you slowly lose your conciousness and fall asleep...only to never wake up...");
+
+        ivStory.setImageResource(R.drawable.   );
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
     }
 
     private void runFromDoorTwo()
@@ -290,20 +332,6 @@ public class GameCLopezJames extends GameActivity {
             @Override
             public void onClick(View view) { goRight(); }
         });
-
-        Util.clearConsole();
-        System.out.println("Running past the doors direction leads you to a strange hall area that has a left or right area to go through, do you either go left or right?");
-        System.out.println("1. Go left\n2. Go right");
-        int choice = Util.enterInt(1,2);
-
-        if (choice == 1)
-        {
-            goLeft();
-        }
-        else if (choice == 2)
-        {
-            goRight();
-        }
     }
 
     private void goLeft()
@@ -315,26 +343,43 @@ public class GameCLopezJames extends GameActivity {
 
     private void goRight()
     {
-        Util.clearConsole();
-        System.out.println("Going right..well wasn't right this time as walking in this area as you see a unworldy creature roaming the area, it seems it hasn't noticed you though. Now having to quickly think on what to do, either walk backwards quielty or run for you life in the opposite direction");
-        System.out.println("1. Walk backwards quietly\n2. RUN FOR YOUR LIFE");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("Going right...well wasn't right this time, get it? As your walking in this area as you see an unworldy creature roaming the area, it seems it hasn't noticed you though. Now having to quickly think on what to do, either walk backwards quielty or run for you life in the opposite direction")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            walkBackQuietly();
-        }
-        else if (choice == 2)
-        {
-            runForYourLife();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Walk back very..very...quietly");
+        btn2.setText("RUN FOR YOUR LIFE AHHHHHHHH");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { walkBackQuietly(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { runForYourLife(); }
+        });
     }
 
     private void walkBackQuietly()
     {
-        Util.clearConsole();
-        System.out.println("You walk back quietly and the creature seemed to have dissapeared from your line of sight as if it wondered off somewhere else...you turn back to walk back out of this area but as soon as you turn around..the creature was there the whole time...waiting for you. Your journey has come to an end...");
-        defeat();
+        isWon = false;
+        tvStoryText.setText("You walk back quietly and the creature seemed to have dissapeared from your line of sight as if it wondered off somewhere else...you turn back to walk back out of this area but as soon as you turn around..the creature was there the whole time...waiting for you. Your journey has come to an end...");
+
+        ivStory.setImageResource(R.drawable.   );
+
+        setAllBtnsVisible();
+        btn1.setText("Next");
+        btn2.setVisibility(View.INVISIBLE);
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                end();
+            }
+        });
     }
 
 
@@ -348,91 +393,110 @@ public class GameCLopezJames extends GameActivity {
 
     private void openDoorThree()
     {
-        Util.clearConsole();
-        System.out.println("You decide to open three, immediantly you are somewhere unrecognizible, it's real life but some place you've never been, someone walks up to you and says あなたはアメリカン人ですか which is Japanese, you are somehow in Japan of all places, with little to no knowledge of the Japanese language, you foolishly say in the most american accent こんにちは as you hear it's constantly used in Animes you've watched before you ended up in this situation, except this isn't one you are in. The Japanese soldier now knowing your american quickly put's a bag over you head, another hitting the back of your knee to fall and you are taking somewhere you don't know. Do you know ask where are you're being taken or try to communicate with the soldiers?");
-        System.out.println("1. Ask where you are being taken to\2. Try to communicate with the soldiers");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You decide to open three, immediantly you are somewhere unrecognizible, it's real life but some place you've never been, someone walks up to you and says あなたはアメリカン人ですか which is Japanese, you are somehow in Japan of all places, with little to no knowledge of the Japanese language, you foolishly say in the most american accent こんにちは as you hear it's constantly used in Animes you've watched before you ended up in this situation, except this isn't one you are in. The Japanese soldier now knowing your american quickly put's a bag over you head, another hitting the back of your knee to fall and you are taking somewhere you don't know. Do you know ask where are you're being taken or try to communicate with the soldiers?")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            askQuestions();
-        }
-        else if (choice == 2)
-        {
-            tryAndCommunicate();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Ask questions");
+        btn2.setText("Try your best and communicate");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { askQuestions(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { tryAndCommunicate(); }
+        });
     }
-
 
     private void askQuestions()
     {
-        Util.clearConsole();
-        System.out.println("You start asking frantic questions like WHERE AM I GOING, WHY AM I BEING TAKEN SOMEWHERE, WHAT HAVE EVEN DONE!? At some point one the soldiers just says SHUSH AMERICAN. You soon get the bag taken off your head and see a prison cell, your immediantly thrown inside and locked inside of it. You still wonder why this is happening until you hear a nerby radio say the current time you are in year 1943, the year where the war between America and Japan where still taking place, realizing why you are now taken in, now you wonder what to do. Do you either look around for anything to help you or someone or fall asleep on the bed to kill some time?");
-        System.out.println("1. Look around for anything to help you\2. Fall asleep to take kill some time");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You start asking frantic questions like WHERE AM I GOING, WHY AM I BEING TAKEN SOMEWHERE, WHAT HAVE EVEN DONE!? At some point one the soldiers just says SHUSH AMERICAN. You soon get the bag taken off your head and see a prison cell, your immediantly thrown inside and locked inside of it. You still wonder why this is happening until you hear a nerby radio say the current time you are in year 1943, the year where the war between America and Japan where still taking place, realizing why you are now taken in, now you wonder what to do. Do you either look around for anything to help you or someone or fall asleep on the bed to kill some time?")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            lookAroundForHelp();
-        }
-        else if (choice == 2)
-        {
-            fallAsleep();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Look around for anything to aid you in your situation");
+        btn2.setText("Catch some probably needed sleep");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { lookAroundForHelp(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { fallAsleep(); }
+        });
     }
 
 
     private void lookAroundForHelp()
     {
-        Util.clearConsole();
-        System.out.println("You look around for anything to help you out, you find a fully functional phone underneath your bed with full battery and no password! But only downside is there is no reception at all making not so useful to help you now, you soon decide to fall asleep to kill some time. Now awaken, you see a guard sitting next to your cell, they appear to be not so old as the other ones but still fairly enough to be one. You wonder if you should try talking to the guard to see if they know any english, or do something abrupt to get the guards attention?");
-        System.out.println("1. Try and talk to the guard\2. Do something abrupt to get the guards attention");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You look around for anything to help you out, you find a fully functional phone underneath your bed with full battery and no password! But only downside is there is no reception at all making not so useful to help you now, you soon decide to fall asleep to kill some time. Now awaken, you see a guard sitting next to your cell, they appear to be not so old as the other ones but still fairly enough to be one. You wonder if you should try talking to the guard to see if they know any english, or do something abrupt to get the guards attention?")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            talkToTheGuard();
-        }
-        else if (choice == 2)
-        {
-            doSomethingAbrupt();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Try and talk with the guard");
+        btn2.setText("Do something completly usless and abrupt to get the guards attention");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { talkToTheGuard(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { doSomethingAbrupt(); }
+        });
     }
 
 
     private void talkToTheGuard()
     {
-        Util.clearConsole();
-        System.out.println("You try to talk the guard, the guard looks up at you and say's What do you want inmate. Cold as ice but you stil persist and ask questions about the situation you walked into, the guard although annoyed answers your questions and you figured that yes, there currently is a war happening against America and Japan and you an American is in Japan. You know question if you can see how far you can go in this place without any resrictions. Do you see if you can end up leaving you cell to examine the place or don't even try to do anythig dumb that can end horribly");
-        System.out.println("1. Ask the bathroom to use the bathroom\2. Don't try anything dumb that can end horribly");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You try to talk the guard, the guard looks up at you and say's What do you want inmate. Cold as ice but you stil persist and ask questions about the situation you walked into, the guard although annoyed answers your questions and you figured that yes, there currently is a war happening against America and Japan and you an American is in Japan. You know question if you can see how far you can go in this place without any resrictions. Do you see if you can end up leaving you cell to examine the place or don't even try to do anything dumb that can end horribly")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            askTheGuardForBathroom();
-        }
-        else if (choice == 2)
-        {
-            dontTryAnythingDumb();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Ask to use the bathroom to wonder a bit");
+        btn2.setText("Don't try anything dumb to draw any unwanted attention");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { talkToTheGuard(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { doSomethingAbrupt(); }
+        });
     }
 
 
     private void askTheGuardForBathroom()
     {
-        Util.clearConsole();
-        System.out.println("You ask the guard where can you use the bathroom, to your suprise the guard starts opening you cell door and you follow them to a small room with a toliet, the guard tells you not try anything dumb and walks away. Looking around in the room, you see a red door ominously placed to the far left to the room. You really start to question if this is real life but now are left thinking if you should open the door or call for the guard and have them examine the door for you?");
-        System.out.println("1. Open the ominus red door\2. Call the guard to examine it for you");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You ask the guard where can you use the bathroom, to your suprise the guard starts opening you cell door and you follow them to a small room with a toliet, the guard tells you not try anything dumb and walks away. Looking around in the room, you see a red door ominously placed to the far left to the room. You really start to question if this is real life but now are left thinking if you should open the door or call for the guard and have them examine the door for you?")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            openTheRedOminusDoor();
-        }
-        else if (choice == 2)
-        {
-            callTheGuardToExamineIt();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Open the ominus red door that awaits any type of fate");
+        btn2.setText("Call the guard over to come examine it FOR you");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { openRedDoor(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { letTheGuardExamineIt(); }
+        });
     }
 
 
@@ -453,18 +517,23 @@ public class GameCLopezJames extends GameActivity {
 
     private void fallAsleep()
     {
-        Util.clearConsole();
-        System.out.println("You jusr decide to fall asleep since it looked as if you were in a no win situation. You awake later and see a guard now in the vacinity of your cell, you wonder to yourself if you can possibly ask the guard to use the bathroom to leave your cell, or do nothing to not get into any more trouble.");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You just decide to fall asleep since it looked as if you were in a no win situation. You awake later and see a guard now in the vacinity of your cell, you wonder to yourself if you can possibly ask the guard to use the bathroom to leave your cell, or do nothing to not get into any more trouble.")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            askToUseTheBathroom();
-        }
-        else if (choice == 2)
-        {
-            doNothing();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Ask to use the bathroom to wonder a bit");
+        btn2.setText("Don't try anything dumb to draw any unwanted attention");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { askToUseTheBathroom(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { doNothing(); }
+        });
     }
 
     private void doSomethingAbrupt()
@@ -490,18 +559,23 @@ public class GameCLopezJames extends GameActivity {
 
     private void askToUseTheBathroom()
     {
-        Util.clearConsole();
-        System.out.println("You ask to use the bathrooom to see where you would have to go to use it. To your suprise the guard starts opening you cell door and you follow them to a small room with a toliet, the guard tells you not try anything dumb and walks away. Looking around in the room, you see a red door ominously placed to the far left to the room. You really start to question if this is real life but now are left thinking if you should open the door or call for the guard and have them examine the door for you?");
-        int choice = Util.enterInt(1,2);
+        tvStoryText.setText("You ask to use the bathroom to see where you would have to go to use it. To your suprise the guard starts opening you cell door and you follow them to a small room with a toliet, the guard tells you not try anything dumb and walks away. Looking around in the room, you see a red door ominously placed to the far left to the room. You really start to question if this is real life but now are left thinking if you should open the door or call for the guard and have them examine the door for you?")
+        ivStory.setImageResource(R.drawable.im_game_mineShaft);
 
-        if (choice == 1)
-        {
-            openRedDoor();
-        }
-        else if (choice == 2)
-        {
-            letTheGuardExamineIt();
-        }
+        setAllBtnsVisible();
+        btn1.setText("Ask to use the bathroom to wonder a bit");
+        btn2.setText("Don't try anything dumb to draw any unwanted attention");
+        btn3.setVisibility(View.INVISIBLE);
+
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { talkToTheGuard(); }
+        });
+
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { doSomethingAbrupt(); }
+        });
     }
 
     private void doNothing()
@@ -561,4 +635,47 @@ public class GameCLopezJames extends GameActivity {
             start();
         }
     }
+
+    private void end()
+    {
+        if (isWon)
+        {
+            tvStoryText.setText("Its a labor day miracle! You get to live the whole day over again!");
+
+            ivStory.setImageResource(R.drawable.im_laborday_miracle);
+        }
+        else
+        {
+            numLives--;
+            String text = "You wasted an entire year of high school. You have " + numLives + " years remaining";
+            tvStoryText.setText(text);
+        }
+
+        if (numLives > 0)
+        {
+            btn1.setText("Play again!");
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    start();
+                }
+            });
+        }
+        else
+        {
+            tvStoryText.setText("You won! Why not see what other choices leads you to in the Strain Area!");
+            btn1.setText("Back to menu");
+
+            ivStory.setImageResource(R.drawable.im_laborday_high_school_over);
+
+            btn1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(GameLaborDayAdventure.this, MainActivity.class));
+                }
+            });
+        }
+    }
+
+
 }
